@@ -1,5 +1,5 @@
 window.onload = function () {
-    var formbtn = document.querySelector("form > button");
+    let formbtn = document.querySelector("form > button");
     formbtn.onclick = main;
 };
 function main() {
@@ -7,10 +7,10 @@ function main() {
     isTextPresent("last-name", "Last name is required");
 }
 function isTextPresent(id, errMsg) {
-    var txtBox = document.getElementById(id);
-    var txtBoxValue = txtBox.value;
+    let txtBox = document.getElementById(id);
+    let txtBoxValue = txtBox.value;
     if (txtBoxValue == "") {
-        var errSpan = txtBox.nextElementSibling;
+        let errSpan = txtBox.nextElementSibling;
         errSpan.innerText = errMsg;
         return false;
     }
