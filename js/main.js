@@ -3,8 +3,21 @@ window.onload = function () {
     formbtn.onclick = main;
 };
 function main() {
+    resetErrorMessages();
     isTextPresent("first-name", "First name is required");
     isTextPresent("last-name", "Last name is required");
+}
+function resetErrorMessages() {
+    let allSpans = document.querySelectorAll("form span");
+    for (let i = 0; i < allSpans.length; i++) {
+        let currSpan = allSpans[i];
+        if (currSpan.hasAttribute("data-required")) {
+            currSpan.innerText = "*";
+        }
+        else {
+            currSpan.innerText = "";
+        }
+    }
 }
 function isTextPresent(id, errMsg) {
     let txtBox = document.getElementById(id);
