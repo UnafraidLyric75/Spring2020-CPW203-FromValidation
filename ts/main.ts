@@ -3,14 +3,31 @@ window.onload = function(){
     formbtn.onclick = main;
 }
 
+function changeHeading(){
+    let heading = <HTMLElement>this;
+}
+
 function main():void{
+    let msgHeading = document.createElement("h2");
+    msgHeading.innerText = "Processing form.";
+    msgHeading.setAttribute("class", "message");
+    let h1 = document.querySelector("h1");
+    h1.insertAdjacentElement("afterend", msgHeading);
+
+    setTimeout(function(){
+        msgHeading.remove();
+    }, 500)
+
     resetErrorMessages();
     isTextPresent("first-name", "First name is required");
     isTextPresent("last-name", "Last name is required");
+    validdateDate();
+}
 
+function validdateDate() {
     let dobBox = <HTMLInputElement>document.getElementById("dob");
     let dob = dobBox.value;
-    if(!isValidDate(dob)){
+    if (!isValidDate(dob)) {
         dobBox.nextElementSibling.innerHTML = "Invalid date foramt mm/dd/yyyy or m/d/yyyy";
     }
 }
